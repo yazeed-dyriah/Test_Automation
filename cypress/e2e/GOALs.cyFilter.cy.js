@@ -10,22 +10,65 @@ describe("GOALs", function()
     it("Login",()=>
     {
         //cy.viewport(1000, 600)
+        cy.viewport(1600, 525)
+        //Login
         cy.visit("https://goal-dev.mdx.ac.uk/accounts/login/?next=/");
-        cy.get('#id_username').type("yazeed").should("have.value","yazeed");
-        cy.get('#id_password').type("test12345");
-        cy.get('.btn.btn.btn-primary.w-100').click();
-        cy.get('#userInfoMenu').click();
-        cy.get('[href="/staff/"]').click();
-        cy.get(':nth-child(2) > :nth-child(2) > .row > .col-sm-4 > .nav > .nav-item > .nav-link').click();
-        
-        cy.get('.mr-auto > :nth-child(2) > .nav-link').click();
-        //cy.get(':nth-child(1) > .custom-control-label > h5').click();
+        //username
+        cy.get("input[name='username']").type("shahd")
+        //password name='password'
+        cy.get("input[name='password']").type("shahd12345")
         
         
-        cy.get('.align-items-center > :nth-child(3) > .btn').click();
+        // usertype name='login_as'
+        cy.get('select[name="login_as"]').select('staff');
+        cy.get('button[type="submit"]').click();
+        cy.get('a.nav-link.active.w-100[href="/staff/25"]').click();
+        cy.get('a.nav-link.text-light[href="/staff/25/goals/"]').click();
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({force: true});
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({force: true});
+        cy.get('input[type="checkbox"][id="topic_61"]').check({force: true});
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({force: true});
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({force: true});
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Apply filters').click();
+
+        //Edit staff goal abilities
         
-        cy.get('[style="height: 10vh"] > :nth-child(1) > .custom-control-label').click();
+
         
+
+
+
+      
+        
+      
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         //testCase4: show all  observed student
         cy.get('[style="overflow-y: scroll;height: 30.7vh"] > :nth-child(1) > .custom-control-label').click();
         
@@ -64,7 +107,7 @@ describe("GOALs", function()
         //cy.get('[style="overflow-y: scroll;height: 20vh"] > :nth-child(2) > .custom-control-label').click();
         //cy.get('.align-items-center > :nth-child(3) > .btn').click();
 
-
+*/
 
 
        
