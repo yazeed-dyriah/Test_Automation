@@ -31,7 +31,8 @@ describe("Staff", function()
 
        //TestCase19: Edit staff  abilities
        cy.get('#staff_MahmodGG > [style=""] > .row > :nth-child(1) > a').click();
-       cy.get('#edit_staff_MahmodGG > :nth-child(9) > .textinput').select('2');
+
+       cy.get('[name="permissions_Goals"]').select('2');
        cy.get('button[type="submit"][form="form_staff_MahmodGG"]').contains('Save').click( {force: true});
 
        //TestCase20: Edit staff Student abilities
