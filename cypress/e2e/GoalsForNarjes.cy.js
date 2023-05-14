@@ -22,16 +22,16 @@ describe("GOALs", function () {
         cy.get('a.nav-link.text-light[href="/staff/25/goals/"]').click();
         
 
-        //show all non observed student
-        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
-        cy.get('button.btn.btn-danger.mt-2.w-100').click();
-        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
-        cy.get('button').contains('Apply filters').click();
-        cy.get('button.btn.btn-danger.mt-2.w-100').click();
+        // //show all non observed student
+        // cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        // cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        // cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+        // cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        // cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        // cy.get('button.btn.btn-danger.mt-2.w-100').click();
+        // cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        // cy.get('button').contains('Apply filters').click();
+        // cy.get('button.btn.btn-danger.mt-2.w-100').click();
 
 
         // //give student a grade
@@ -63,7 +63,25 @@ describe("GOALs", function () {
         // cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
         // cy.get('input[type="checkbox"][class="custom-control-input"][name="groups_filter"][id="group_GroupB"][group="GroupB"]').check({ force: true });
         // cy.get('button').contains('Apply filters').click();
+        
+        //Try to observe the goal through select a multiple levels 
+        // cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        // cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        // cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        // cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        // cy.get('button.btn.btn-danger.mt-2.w-100').click();
+        // cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        // cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click()
 
+        //Try to observe all goals that are not observed
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click()
 
     })
 });
