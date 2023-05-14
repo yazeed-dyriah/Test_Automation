@@ -1,7 +1,7 @@
 describe("Staff", function() {
     context('Test Cases', ()=>{
         beforeEach(() =>{
-            cy.viewport(1600, 525);
+            cy.viewport(1600, 900);
             
             // Login
             cy.visit('https://goal-dev.mdx.ac.uk/accounts/login/?next=/')
@@ -227,10 +227,6 @@ describe("Staff", function() {
             cy.get('tr#staff_MahmodGG td:nth-child(2)')
             .should('be.visible');
         });
-    
-    
-    
-    
     });
     });
     
