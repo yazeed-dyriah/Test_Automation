@@ -32,14 +32,27 @@ describe("GOALs", function () {
 
 });
 
-    it("TestCase1 show all non observed student", () => {
+     it("TestCase1 show all non observed student", () => {
 
-        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
         cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
-        cy.get('button.btn.btn-danger.mt-2.w-100').click();
+         cy.get('button.btn.btn-danger.mt-2.w-100').click();
+         cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+         cy.get('button').contains('Apply filters').click();
+         cy.get('button.btn.btn-danger.mt-2.w-100').click();
+ });
+
+
+
+     it("TestCase2 give student a grade", () => {
+
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][id="topic_60"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
         cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
         cy.get('button').contains('Apply filters').click();
         cy.get('button.btn.btn-danger.mt-2.w-100').click();
@@ -57,70 +70,73 @@ describe("GOALs", function () {
         cy.get('button').contains('Apply filters').click();
         cy.get('select[name="grade"][onchange="gradeMe(72919, this.value)"]').select('6')
         .select('6', { force: true });
-    });
+         cy.get('button').contains('Apply filters').click();
+         cy.get('select[name="grade"][onchange="gradeMe(65959, this.value)"]').select('6')
+         .select('6', { force: true });
+     });
 
 
 
 
-    it("TestCase3 observe all filter exept low level ", () => {
+     it("TestCase3 observe all filter exept low level ", () => {
 
-        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
-        cy.get('input[type="checkbox"][id="topic_61"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][topic="60"][id="goal_1170"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][topic="60"][id="goal_1173"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
-        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
-        cy.get('input[type="checkbox"][name="level_filter"][class="custom-control-input filter"][id="level_Low"]').uncheck({ force: true });
-        cy.get('button').contains('Apply filters').click();
-        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
-    });
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][id="topic_61"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][topic="60"][id="goal_1170"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][topic="60"][id="goal_1173"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+         cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+         cy.get('input[type="checkbox"][name="level_filter"][class="custom-control-input filter"][id="level_Low"]').uncheck({ force: true });
+         cy.get('button').contains('Apply filters').click();
+         cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+     });
 
 
-    it("TestCase4 Observe all GOALs that belong to GroupB", () => {
+     it("TestCase4 Observe all GOALs that belong to GroupB", () => {
 
-        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({force: true});
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
-        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input"][name="groups_filter"][id="group_GroupB"][group="GroupB"]').check({ force: true });
-        cy.get('button').contains('Apply filters').click();
-        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
-    });
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({force: true});
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+         cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input"][name="groups_filter"][id="group_GroupB"][group="GroupB"]').check({ force: true });
+         cy.get('button').contains('Apply filters').click();
+         cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+     });
 
-    it("TestCase5 Observe the goal through select a multiple levels ", () => {
-        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
-        cy.get('button.btn.btn-danger.mt-2.w-100').click();
-        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
-        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
-    });
+     it("TestCase5 Observe the goal through select a multiple levels ", () => {
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+         cy.get('button.btn.btn-danger.mt-2.w-100').click();
+         cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+         cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+     });
 
-    
-      it("TestCase6 Observe all GOALs that are not observed", () => {
-        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
-        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
-        cy.get('button').contains('Apply filters').click();
-        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click()
-      });
+
+       it("TestCase6 Observe all GOALs that are not observed", () => {
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+         cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+         cy.get('button').contains('Apply filters').click();
+         cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click()
+       });
         
 
-    it("TestCase7 Observe the goal through select a multiple topics ", () => {
-        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
-        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
-        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
-        cy.get('button').contains('Apply filters').click();
-        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
-    });
+     it("TestCase7 Observe the goal through select a multiple topics ", () => {
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+         cy.get('button').contains('Apply filters').click();
+         cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+     });
 
  
     it("TestCase8 Observe the goal through select a multiple levels ", () => {
@@ -128,10 +144,17 @@ describe("GOALs", function () {
         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+    });
+     
+        it("TestCase8 Observe the goal through select a multiple levels ", () => {
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
         cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
-        cy.get('button').contains('Apply filters').click();
-        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
-    });  
+         cy.get('button').contains('Apply filters').click();
+         cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+     });  
      
 
     it("TestCase9 Observe all goals that are not observed", () => {
@@ -163,6 +186,22 @@ describe("GOALs", function () {
         cy.get('input[type="checkbox"][class="custom-control-input filter"][name="level_filter"][id="level_Low"]').check({ force: true });
         cy.get('button').contains('Apply filters').click();
     });
+
+
+     it("TestCase10 Show all Goals have a low level from GroupB", () => {
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input"][name="all_levels"][id="all_levels"]').uncheck({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+         cy.get('input[type="checkbox"][id="topic_61"]').check({ force: true });
+         cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input"][name="groups_filter"][id="group_GroupB"][group="GroupB"]').check({ force: true });
+         cy.get('input[type="checkbox"][class="custom-control-input filter"][name="level_filter"][id="level_Low"]').check({ force: true });
+         cy.get('button').contains('Apply filters').click();
+     });
         
 
 
