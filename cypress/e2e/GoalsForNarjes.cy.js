@@ -47,7 +47,7 @@ describe("GOALs", function () {
 
 
 
-//     it("TestCase2 give student a grade", () => {
+     it("TestCase2 give student a grade", () => {
 
          cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
          cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
