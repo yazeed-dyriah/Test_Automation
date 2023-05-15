@@ -460,5 +460,168 @@ it("TestCase12 try to observe the goal through select all goals", () => {
     
     });
 ```
-# For Narjes
+# For Narjes:
+## TestCase1 show all non observed student
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects all Topics, selects all groups,all assigment , then click unobserve button, then uncheck not_observed checkbox, then click to observ button ,click Apply filters button finaly unobserve button
+```
+it("TestCase1 show all non observed student", () => {
+
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('button.btn.btn-danger.mt-2.w-100').click();
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('button.btn.btn-danger.mt-2.w-100').click();
+});
+```
+
+## TestCase2 give student a grade
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects all Topics, selects all groups ,then uncheck not_observed checkbox , click Apply filters button , Select gread 6 of entry gread me corresponding to this student's information in particular
+
+```
+it("TestCase2 give student a grade", () => {
+
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="topic_60"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('select[name="grade"][onchange="gradeMe(65959, this.value)"]').select('6')
+        .select('6', { force: true });
+    });
+```
+
+## TestCase3 observe all filter exept low level
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects all Topics, selects all groups ,then uncheck not_observed checkbox , uncheck  level Low check box,click Apply filters button ,click Observe button
+```
+it("TestCase3 observe all filter exept low level ", () => {
+
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][topic="60"][id="goal_1170"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][topic="60"][id="goal_1173"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('input[type="checkbox"][name="level_filter"][class="custom-control-input filter"][id="level_Low"]').uncheck({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+    });
+```
+
+## TestCase4 Observe all GOALs that belong to GroupB 
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects all Topics,uncheck not_observed checkbox, selects GroupB ,then click Apply filters button , finaly click Observe button
+```
+it("TestCase4 Observe all GOALs that belong to GroupB", () => {
+
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({force: true});
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input"][name="groups_filter"][id="group_GroupB"][group="GroupB"]').check({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+    });
+```
+
+## TestCase5 Observe the goal through select a multiple levels 
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects all Topics ,select all groups,uncheck not observed checkbox , click un observe button , uncheck not observed checkbox , click un observe button again
+```
+it("TestCase5 Observe the goal through select a multiple levels ", () => {
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('button.btn.btn-danger.mt-2.w-100').click();
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+    });
+```
+
+## TestCase6 Observe all GOALs that are not observed
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects all Topics ,select all groups,uncheck not observed checkbox , click Apply filters button , finaliy click on Observe button
+```
+it("TestCase6 Observe all GOALs that are not observed", () => {
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click()
+      });
+```
+
+## TestCase7 Observe the goal through select a multiple topics HomeWork1
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects HomeWork1 ,select all groups,click Apply filters button , finaliy click on Observe button
+```
+it("TestCase7 Observe the goal through select a multiple topics ", () => {
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+    });
+```
+
+## TestCase8 Observe the goal through select a multiple levels
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects all Topics ,select all groups,uncheck not observed checkbox ,click Apply filters button , finaliy click on Observe button
+```
+it("TestCase8 Observe the goal through select a multiple levels ", () => {
+        //cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+    }); 
+```
+
+## TestCase9 Observe all goals that are not observed
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, selects all Topics ,select all groups,uncheck not observed checkbox ,click Apply filters button , click on unobserve button , click on observe button
+```
+it("TestCase9 Observe all goals that are not observed", () => {
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
+        cy.get('button.btn.btn-danger.mt-2.w-100').click();
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('button').contains('Apply filters').click();
+        cy.get('button.btn.btn-danger.mt-2.w-100').click();
+        cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
+    });
+```
+
+## TestCase10 Show all Goals have a low level from GroupB
+### uses the get method from Cypress to select a checkbox input element with a specific set of attributes selects all goals, uncheck all level , selects all Topics,uncheck not observed checkbox ,select GroupB groups, select GroupB , select level Low ,finaliy click Apply filters button
+```
+//Show all Goals have a low level from GroupB
+    it("TestCase10 Show all Goals have a low level from GroupB", () => {
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input"][name="all_levels"][id="all_levels"]').uncheck({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="topic_61"]').check({ force: true });
+        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input"][name="groups_filter"][id="group_GroupB"][group="GroupB"]').check({ force: true });
+        cy.get('input[type="checkbox"][class="custom-control-input filter"][name="level_filter"][id="level_Low"]').check({ force: true });
+        cy.get('button').contains('Apply filters').click();
+    });
+```
+
+
 
