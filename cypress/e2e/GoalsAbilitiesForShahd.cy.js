@@ -175,19 +175,19 @@ it("TestCase10 Observe all goals in  groupB", () => {
 
     it("TestCase12 try to observe the goal through select all goals", () => {
         cy.get('a.nav-link.text-light[href="/staff/25/goals/"]').click();
-        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').uncheck({force: true});//بشيل التحديد عنهم كلهم
         cy.get('input[type="checkbox"][class="custom-control-input"][name="all_goals"][id="all_goals"]').check({force: true});
         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({force: true});
-        cy.get('input[type="checkbox"][id="not_observed"]').uncheck({force: true});
+        cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({force: true});
+        cy.get('input[type="checkbox"][id="not_observed"]').check({force: true});
         cy.get('button.btn.btn-primary.mt-2.w-100').contains('Observe').click();
     
     });
     
+        //TestCase (14) Try to observe the goal through select a multiple with unselect low level
 });
 });
 
        
 
-        //TestCase (14) Try to observe the goal through select a multiple with unselect low level
 
        
