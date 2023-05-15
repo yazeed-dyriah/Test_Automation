@@ -55,7 +55,7 @@ describe("GOALs", function () {
         cy.get('input[type="checkbox"][name="all_groups"][id="all_groups"]').check({ force: true });
         cy.get('input[type="checkbox"][id="not_observed"]').uncheck({ force: true });
         cy.get('button').contains('Apply filters').click();
-        cy.get('select[name="grade"][onchange="gradeMe(65959, this.value)"]').select('6')
+        cy.get('select[name="grade"][onchange="gradeMe(72919, this.value)"]').select('6')
         .select('6', { force: true });
     });
 
@@ -124,7 +124,7 @@ describe("GOALs", function () {
 
  
     it("TestCase8 Observe the goal through select a multiple levels ", () => {
-        //cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
+        cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_60"]').check({ force: true });
         cy.get('input[type="checkbox"][class="custom-control-input topic_filter"][id="topic_61"]').check({ force: true });
@@ -148,7 +148,7 @@ describe("GOALs", function () {
     });
     
 
-    //Show all Goals have a low level from GroupB
+    
     it("TestCase10 Show all Goals have a low level from GroupB", () => {
         cy.get('input[type="checkbox"][name="goal_filter"][id="goal_1136"]').check({ force: true });
         cy.get('input[type="checkbox"][name="all_goals"][id="all_goals"]').check({ force: true });
